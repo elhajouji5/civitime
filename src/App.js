@@ -1,8 +1,11 @@
 import React from 'react'
 import './App.css';
+import Index from './pages/Index'
 
 const App = () => {
-    return <div id="temp-style"> Develop your test here </div>
+    return <div>
+        <Index />
+    </div>
 }
 
 export default App;

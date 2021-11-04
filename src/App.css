@@ -1,7 +1,96 @@
+:root {
+    /* --bg-color: #e6e6e6; */
+    --bg-color: #dde1e6;
+    --purple: #7601d5;
+    --blue: #1a39e1;
+    --white: #fff;
+    --dark-grey: #888;
+}
+
+body {
+    background: var(--bg-color);
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+
+.flex{
+    display: flex;
+}
+.full-size {
+    height: 100%;
+    width: 100%;
+}
+.center {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.m2 {
+    margin: 2px;
+}
+
+.container {
+    margin: auto;
+    margin-top: 10%;
+    width: 50%;
+    border: var(--purple) 3px solid;
+    padding: 0px;
+    border-radius: 5px;
+}
+
+.container p:first-child{
+    background: var(--purple);
+    color: var(--white);
+    text-transform: uppercase;
+    padding: 5px;
+    margin: 0px;
+    font-size: 18px;
+}
+
+
 #temp-style{
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
+}
+.icons {
+    border-top: 2px solid var(--dark-grey);
+    padding: 20px 5px 5px 5px;
+    width: fit-content;
+    margin: auto;
+    margin-bottom: 10px;
+}
+.icons > .flex > img {
+    margin: 2px;
+}
+.profile-form {
+    margin: auto;
+    width: fit-content;
+    margin-bottom: 20px;
+}
+.avatar {
+    margin: 15px;
+}
+
+.form-confirm {
+    margin: 0px;
+    color: var(--white);
+    background-color: var(--blue);
+    border-radius: 20px;
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+/* Desktop version's adjustment */
+@media screen and (min-width: 768px) {
+    .container {
+        /*  */
+    }
+    
 }
