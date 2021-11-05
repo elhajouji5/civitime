@@ -1,7 +1,6 @@
 import React from 'react'
 
 const Woman = (props) => {
-    const dressColor = props.femaleState.dressColor
     const skinColor = props.femaleState.skinColor
     const dressBackGroundColor = props.femaleState.dressBackGroundColor
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { People, dressColors, skinColors } from '../assets/Assets'
 
 const Index = () => {
@@ -45,7 +45,7 @@ const Index = () => {
 
         // Retrieve the targeted gender preferences that will be changed
         const targetedGenderValues = profileState[gender]
-        debugger
+
         // Change skin color
         if (target === 'skinColor') {
             targetedGenderValues[target] = color
@@ -53,7 +53,7 @@ const Index = () => {
             // Change dress colors
             // If the selected component is not stripped dresses use a simple color for all the T-Shirt
             // Else the background color will be different so that it gives a stripped colors
-            if (!(new RegExp(/color\-striped/)).test(component) && target === 'dressColor') {
+            if (!(new RegExp(/color-striped/)).test(component) && target === 'dressColor') {
                 targetedGenderValues['dressColor'] = color
                 targetedGenderValues['dressBackGroundColor'] = color
             } else if (target === 'dressColor') {
@@ -62,7 +62,7 @@ const Index = () => {
             }
 
         }
-        debugger
+
         setProfileState({ ...profileState, [gender]: targetedGenderValues })
     }
 
