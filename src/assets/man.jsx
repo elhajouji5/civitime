@@ -4,8 +4,12 @@ const Man = (props) => {
     const dressColor = props.maleState.dressColor
     const skinColor = props.maleState.skinColor
     const dressBackGroundColor = props.maleState.dressBackGroundColor
+
+    // Change the background color if the component is subject to changes
+    const backGroundColor = props.active ? 'var(--purple)' : 'transparent'
+
     return (
-        < svg width="135" height="136" viewBox="0 0 135 136" fill="none" xmlns="http://www.w3.org/2000/svg" >
+        <svg onClick={() => {props.setGender('male')} } style={{ cursor: 'pointer', background: backGroundColor }} className="avatar" viewBox="0 0 135 136" fill="none" xmlns="http://www.w3.org/2000/svg" >
             <g filter="url(#filter0_ii)">
                 <path fillRule="evenodd" clipRule="evenodd" d="M67.5 135C104.779 135 135 104.779 135 67.5C135 30.2208 104.779 0 67.5 0C30.2208 0 0 30.2208 0 67.5C0 104.779 30.2208 135 67.5 135Z" fill="#DDE1E7" />
             </g>

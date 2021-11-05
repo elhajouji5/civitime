@@ -1,29 +1,37 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { People, dressColors, skinColors } from '../assets/Assets'
 
 const Index = () => {
-    const [skinColor, setSkin] = useState('#FCD7B8')
-    const [dressColor, setDress] = useState(null)
     // Indicate whether we're going to eit the male or female
-    const [gender, setGender] = useState('male')
-    // Holding the male profile preferences
-    const [maleState, setMaleState] = useState({
+    const [gender, setGender] = useState(null)
+
+    const defaultProfilePreferences = {
         baseColor: '#B2C7C7',
         skinColor: '#FCD7B8',
         dressColor: null,
         dressBackGroundColor: '#B2C7C7',
+    }
+
+    // Holding the profile preferences
+    const [profileState, setProfileState] = useState({
+        male: { ...defaultProfilePreferences },
+        female: { ...defaultProfilePreferences },
     })
 
     const submitForm = (e) => {
         e.preventDefault()
-        console.log('Submitting the form..')
+        if (!gender) {
+            alert('Vous devez selectionner le sexe tout d\'abord')
+            return
+        }
+        alert('Votre requête est bien traitée..')
     }
 
     /**
      * 
      * @param {string} target targeted area
      * @param {string} color
-     * @param {string} component The corresponding color component
+     * @param {string} component The corresponding color component path
      */
     const updateProfile = (target = 'skinColor', color = 'FCD7B8', component = null) => {
         // User have to select the gender first
@@ -31,21 +39,31 @@ const Index = () => {
             alert('Vous devez selectionner le sexe tout d\'abord')
             return
         }
-        color = color.replace('color', '')
-        let dressBackGroundColor = maleState.dressBackGroundColor
-        if (!(new RegExp(/color\-striped/)).test(component) && target === 'dressColor') {
-            dressBackGroundColor = `#${color}`
-        } else if (target === 'dressColor') {
-            dressBackGroundColor = maleState.baseColor
+
+        // Set the selected color
+        color = '#' + color.replace('color', '')
+
+        // Retrieve the targeted gender preferences that will be changed
+        const targetedGenderValues = profileState[gender]
+        debugger
+        // Change skin color
+        if (target === 'skinColor') {
+            targetedGenderValues[target] = color
+        } else {
+            // Change dress colors
+            // If the selected component is not stripped dresses use a simple color for all the T-Shirt
+            // Else the background color will be different so that it gives a stripped colors
+            if (!(new RegExp(/color\-striped/)).test(component) && target === 'dressColor') {
+                targetedGenderValues['dressColor'] = color
+                targetedGenderValues['dressBackGroundColor'] = color
+            } else if (target === 'dressColor') {
+                targetedGenderValues['dressColor'] = color
+                targetedGenderValues['dressBackGroundColor'] = targetedGenderValues.baseColor
+            }
+
         }
-        // Change male preferences
-        if (gender === 'male') {
-            setMaleState({
-                ...maleState,
-                [target]: `#${color}`,
-                dressBackGroundColor
-            })
-        }
+        debugger
+        setProfileState({ ...profileState, [gender]: targetedGenderValues })
     }
 
     return (
@@ -61,12 +79,8 @@ const Index = () => {
 
                 {/* Avatars container */}
                 <div className="flex full-size center">
-                    <div className="avatar">
-                        <People.Male className="full-size" maleState={maleState} />
-                    </div>
-                    <div className="avatar">
-                        {/* <People.Female className="full-size" /> */}
-                    </div>
+                    <People.Male style={{ cursor: 'pointer' }} setGender={setGender} key="male" className="avatar" active={gender === 'male'} maleState={profileState.male} />
+                    <People.Female style={{ cursor: 'pointer' }} setGender={setGender} key="female" className="avatar" active={gender === 'female'} femaleState={profileState.female} />
                 </div>
 
                 {/* Colors */}
