@@ -1,5 +1,5 @@
 import Man from './man'
-import { ReactComponent as Woman } from './woman.svg'
+import Woman from './woman'
 import colorFCD7B8 from './color-FCD7B8.svg'
 import colorE0A39A from './color-E0A39A.svg'
 import colorFCCC84 from './color-FCCC84.svg'
@@ -19,7 +19,7 @@ const Male = (props) => {
     )
 }
 
-const Female = ({ props }) => {
+const Female = (props) => {
     return (
         <Woman {...props} />
     )
