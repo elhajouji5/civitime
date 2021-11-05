@@ -10,23 +10,22 @@ const Index = () => {
                 <strong>Profil</strong>
             </p>
 
-            {/* Form intention */}
-            <p className="">Lequel de ces deux avatars préférez-vous ?</p>
-
             <div className="profile-form ">
+                {/* Form role */}
+                <p className="form-role">Lequel de ces deux avatars préférez-vous ?</p>
 
-                {/* Avatars containner */}
-                <div className="flex full-size">
+                {/* Avatars container */}
+                <div className="flex full-size center">
                     <div className="avatar">
-                        <img src={Assets.man} className="female" />
+                        <img src={Assets.man} className="full-size" />
                     </div>
                     <div className="avatar">
-                        <img src={Assets.woman} className="male" />
+                        <img src={Assets.woman} className="full-size" />
                     </div>
                 </div>
 
                 {/* Colors */}
-                <div className="icons center">
+                <div className="icons">
                     <div className="flex">
                         <img src={Assets.Skin} />
                         <img src={Assets.colorFCD7B8} />
