@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { People, dressColors, skinColors } from '../assets/Assets'
 
 const Index = () => {
@@ -45,7 +45,6 @@ const Index = () => {
 
         // Retrieve the targeted gender preferences that will be changed
         const targetedGenderValues = profileState[gender]
-
         // Change skin color
         if (target === 'skinColor') {
             targetedGenderValues[target] = color
@@ -62,7 +61,6 @@ const Index = () => {
             }
 
         }
-
         setProfileState({ ...profileState, [gender]: targetedGenderValues })
     }
 
